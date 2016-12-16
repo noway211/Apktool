@@ -164,15 +164,20 @@ public class Androlib {
 
             for (String file : files) {
                 if (isAPKFileNames(file) && !NO_COMPRESS_PATTERN.matcher(file).find()) {
+                    //非压缩的文件
                     if (unk.getCompressionLevel(file) == 0) {
 
-                        if (StringUtils.countMatches(file, ".") > 1) {
+//                        if (StringUtils.countMatches(file, ".") > 1) {
+//                            ext = file;
+//                        } else {
+//                            ext = FilenameUtils.getExtension(file);
+//                            if (ext.isEmpty()) {
+//                                ext = file;
+//                            }
+//                        }
+                        ext = FilenameUtils.getExtension(file);
+                        if (ext.isEmpty()) {
                             ext = file;
-                        } else {
-                            ext = FilenameUtils.getExtension(file);
-                            if (ext.isEmpty()) {
-                                ext = file;
-                            }
                         }
 
                         if (! uncompressedFilesOrExts.contains(ext)) {
